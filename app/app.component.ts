@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { KegListComponent} from './keg-list.component';
 import { Keg } from './keg.model';
+import {NewKegComponent} from './new-keg.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { Keg } from './keg.model';
     <h1>{{month}}/{{day}}/{{year}}</h1>
     <hr>
     <keg-list [childKegList]="masterKegList"></keg-list>
+    <new-keg (newKegSender)="addKeg($event)"></new-keg>
   </div>
     `
 })
@@ -29,4 +31,8 @@ export class AppComponent {
     new Keg('5th Anniversary Chocolate Raspberry Imperial Stout','Our 5th Anniversary beer is a dark and decadent imperial stout fermented with raspberries and finished on cocoa nibs and a touch of vanilla','West Brook Brewing Company',0.5,10,'English Pale Ale'),
     new Keg('Dirty Bastard','So good it’s almost wrong. Dark ruby in color and brewed with seven varieties of imported malts. Complex in finish, with hints of smoke and peat, paired with a malty richness and a right hook of hop power to give it the bad attitude that a beer named Dirty Bastard has to live up to. Ain’t for the wee lads.','Founders Brewing Company',4,4,'American Pale Ale')];
   selectedKeg: Keg = null;
+
+  addKeg(newBeerFromChild: Keg) {
+    this.masterKegList.push(newBeerFromChild);
+  }
 }

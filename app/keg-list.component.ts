@@ -14,9 +14,12 @@ import{ Keg } from './keg.model';
           <li>ABV: {{currentKeg.abv}}</li>
           <li>{{currentKeg.style}}</li>
           <li>{{currentKeg.amount}}</li>
+          <li *ngIf="currentKeg.isKicked()">{{currentKeg.isKicked()}}</li>
           <button (click) = "currentKeg.fill16()">Fill Pint</button>
           <button (click) = "currentKeg.fill32()">Fill 32oz Growler</button>
           <button (click) = "currentKeg.fill64()">Fill 64oz Growler</button>
+          <br>
+          <input [(ngModel)]="currentKeg.description">
         </ul>
       </div>
     </div>

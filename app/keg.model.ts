@@ -25,4 +25,15 @@ export class Keg {
       console.log("Error: NOT ENOUGH BEER");
     }
   }
+
+  isKicked(){
+    if(this.amount <= 160 && this.amount > 16){
+      return "I'm almost kicked";
+    }else if(this.amount <= 16){
+      return "I'm kicked";
+    }else{
+      return false;
+    }
+
+  }
 }
