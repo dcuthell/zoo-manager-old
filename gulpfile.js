@@ -66,6 +66,7 @@ gulp.task('sassBuild', function() {
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(sourcemaps.write())
+    .pipe(concat('main.css'))
     .pipe(gulp.dest('./build/css'));
 });
 
