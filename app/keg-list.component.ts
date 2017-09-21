@@ -14,12 +14,27 @@ import{ Keg } from './keg.model';
           <li>ABV: {{currentKeg.abv}}</li>
           <li>{{currentKeg.style}}</li>
           <li>{{currentKeg.amount}}</li>
+          <img class="keg-image" src={{getKegImage(currentKeg)}} alt='NOOOO'>
           <li *ngIf="currentKeg.isKicked()">{{currentKeg.isKicked()}}</li>
-          <button (click) = "currentKeg.fill16()">Fill Pint</button>
-          <button (click) = "currentKeg.fill32()">Fill 32oz Growler</button>
-          <button (click) = "currentKeg.fill64()">Fill 64oz Growler</button>
+          <button class="btn btn-success"(click) = "currentKeg.fill16()">Fill Pint</button>
+          <button class="btn btn-warning"(click) = "currentKeg.fill32()">Fill 32oz Growler</button>
+          <button class="btn btn-danger"(click) = "currentKeg.fill64()">Fill 64oz Growler</button>
           <br>
-          <input [(ngModel)]="currentKeg.description">
+          <div class=" form-group well">
+          <label>Name:</label>
+          <input [(ngModel)]="currentKeg.name" class="form-control">
+          <label>Description:</label>
+          <input [(ngModel)]="currentKeg.description" class="form-control">
+          <label>Brand:</label>
+          <input [(ngModel)]="currentKeg.brand" class="form-control">
+          <label>Price:</label>
+          <input [(ngModel)]="currentKeg.amount" type="number" class="form-control">
+          <label>ABV:</label>
+          <input [(ngModel)]="currentKeg.abv" type="number" class="form-control">
+          <label>Style:</label>
+          <input [(ngModel)]="currentKeg.style" class="form-control">
+          <button class="btn btn-info" (click)="submitForm(newName.value, newDescripton.value, newBrand.value, newName.value, newABV.value, newStyle.value)">Add</button>
+          <a class="btn btn-info" href="#">Cancel</a></div>
         </ul>
       </div>
     </div>
@@ -30,5 +45,20 @@ import{ Keg } from './keg.model';
 export class KegListComponent{
   @Input() childKegList: Keg[];
 
+  getKegImage(thisKeg: Keg){
+    if(thisKeg.amount > 1587){
+      return "./../resources/images/100keg.jpg";
+    }
+        if(thisKeg.amount > 1190){
+      return "./../resources/images/80keg.jpg";
+    }
+    if(thisKeg.amount > 793){
+      return "./../resources/images/60keg.jpg";
+    }
+    if(thisKeg.amount > 396){
+      return "./../resources/images/40keg.jpg";
+    }
+    return "./../resources/images/20keg.jpg";
+  }
 
 }

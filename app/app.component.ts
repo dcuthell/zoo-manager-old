@@ -11,6 +11,7 @@ import {NewKegComponent} from './new-keg.component';
     <h1>{{month}}/{{day}}/{{year}}</h1>
     <hr>
     <keg-list [childKegList]="masterKegList"></keg-list>
+    <a class="btn btn-info" href="#hidden">Add a new beer</a>
     <new-keg (newKegSender)="addKeg($event)"></new-keg>
   </div>
     `
