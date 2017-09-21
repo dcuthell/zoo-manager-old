@@ -15,10 +15,13 @@ import{ Keg } from './keg.model';
           <li>{{currentKeg.style}}</li>
           <li>{{currentKeg.amount}}</li>
           <img class="keg-image" src={{getKegImage(currentKeg)}} alt='NOOOO'>
-          <li *ngIf="currentKeg.isKicked()">{{currentKeg.isKicked()}}</li>
+          <p *ngIf="currentKeg.isKicked()">{{currentKeg.isKicked()}}</p>
           <button class="btn btn-success"(click) = "currentKeg.fill16()">Fill Pint</button>
           <button class="btn btn-warning"(click) = "currentKeg.fill32()">Fill 32oz Growler</button>
           <button class="btn btn-danger"(click) = "currentKeg.fill64()">Fill 64oz Growler</button>
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+          </button>
           <br>
           <div class=" form-group well">
           <label>Name:</label>
@@ -60,7 +63,13 @@ export class KegListComponent{
     if(thisKeg.amount > 396){
       return "./../resources/images/40keg.jpg";
     }
-    return "./../resources/images/20keg.jpg";
+    if(thisKeg.amount > 198){
+      return "./../resources/images/20keg.jpg";
+    }
+    if(thisKeg.amount > 15){
+      return "./../resources/images/10keg.jpg";
+    }
+    return "./../resources/images/00keg.jpg";
   }
 
 }

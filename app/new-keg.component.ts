@@ -32,7 +32,6 @@ export class NewKegComponent {
     }else{
       let newKegToAdd: Keg = new Keg(name, description, brand, price, abv, style );
       this.newKegSender.emit(newKegToAdd);
-      console.log(typeof style);
     }
 
    }

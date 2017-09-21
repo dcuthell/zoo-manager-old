@@ -29,7 +29,7 @@ export class Keg {
   isKicked(){
     if(this.amount <= 160 && this.amount > 16){
       return "I'm almost kicked";
-    }else if(this.amount <= 16){
+    }else if(this.amount < 16){
       return "I'm kicked";
     }else{
       return false;
