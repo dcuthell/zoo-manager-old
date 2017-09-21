@@ -26,7 +26,8 @@ export class NewKegComponent {
   @Output() newKegSender = new EventEmitter();
 
   submitForm(name: string, description: string, brand: string, price: number, abv: number, style:string) {
-    if(name == ""){
+    let trimString = name.trim();
+    if(trimString.length <= 0){
       alert("Please fill out all fields for new keg");
     }else{
       let newKegToAdd: Keg = new Keg(name, description, brand, price, abv, style );

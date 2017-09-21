@@ -5,7 +5,7 @@ import{ Keg } from './keg.model';
   selector:'keg-list',
   template:`
   <div class="well">
-    <div class="panel panel-default" *ngFor="let currentKeg of childKegList">
+    <div class="panel panel-default" *ngFor="let currentKeg of childKegList | funBeers:funBeerInput">
       <div class="panel-heading">{{currentKeg.name}}</div>
       <div class="panel-body">
         <ul>
@@ -44,6 +44,8 @@ import{ Keg } from './keg.model';
 
 export class KegListComponent{
   @Input() childKegList: Keg[];
+
+  funBeerInput: number = 8;
 
   getKegImage(thisKeg: Keg){
     if(thisKeg.amount > 1587){
