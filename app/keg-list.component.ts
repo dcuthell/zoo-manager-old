@@ -48,7 +48,7 @@ import{ Keg } from './keg.model';
 export class KegListComponent{
   @Input() childKegList: Keg[];
 
-  funBeerInput: number = 8;
+  funBeerInput: number = 4;
 
   getKegImage(thisKeg: Keg){
     if(thisKeg.amount > 1587){
